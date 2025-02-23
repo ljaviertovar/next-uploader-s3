@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 import ChackraProvider from "./chackra-provider"
-import Header from "./components/header"
+import Header from "../components/header"
 import { Container } from "@chakra-ui/react"
 
 export const metadata: Metadata = {
