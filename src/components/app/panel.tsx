@@ -1,16 +1,20 @@
-'use client'
+"use client"
 
 import { Box, useDisclosure } from "@chakra-ui/react"
 import { DrawerBackdrop, DrawerCloseTrigger, DrawerContent, DrawerRoot } from "@/components/ui/drawer"
 import SideNav from "./side-nav"
+import PanelHeader from "./panel-header"
 
-export default function Panel() {
+interface Props {
+	children: React.ReactNode
+ }
+
+
+export default function Panel({ children }: Props) {
 	const { open, onOpen, onClose } = useDisclosure()
 
 	return (
-		<Box
-			minH='100vh'
-		>
+		<Box minH='100vh'>
 			<SideNav onClose={() => onClose} display={{ base: "none", md: "block" }} />
 			{/* <Drawer
 				open={isOpen}
@@ -28,21 +32,16 @@ export default function Panel() {
 
 			<DrawerRoot open={open} placement={"start"}>
 				<DrawerBackdrop />
-				{/* <DrawerTrigger asChild>
-					<Button variant='outline' size='sm'>
-						Open ({placement})
-					</Button>
-				</DrawerTrigger> */}
 				<DrawerContent>
 					<SideNav onClose={onClose} />
 					<DrawerCloseTrigger />
 				</DrawerContent>
 			</DrawerRoot>
 
-			{/* <MobileNav onOpen={onOpen} /> */}
+			<PanelHeader onOpen={onOpen} />
+
 			<Box ml={{ base: 0, md: 60 }} p='4'>
-				{/* Content */}
-				holi
+				{children}
 			</Box>
 		</Box>
 	)

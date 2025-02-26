@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import ChackraProvider from "./providers/chackra-provider"
+import { Provider } from "@/components/ui/provider"
 
 export const metadata: Metadata = {
 	title: "AI UploaderS3",
@@ -15,7 +15,7 @@ export default function RootLayout({
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body>
-				<ChackraProvider>{children}</ChackraProvider>
+				<Provider>{children}</Provider>
 			</body>
 		</html>
 	)
