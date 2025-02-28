@@ -41,27 +41,22 @@ const NavItem = ({ label, icon, href }: NavItemType) => {
 		<ChakraLink asChild w='full'>
 			<NextLink href={href}>
 				<Flex
-					align='center'
-					p='4'
-					borderRadius='md'
-					cursor='pointer'
-					bg='bg.emphasized'
-					w='full'
-					color='white'
+					css={{
+						width: "full",
+						paddingX: "4",
+						paddingY: "2",
+						alignItems: "center",
+						borderRadius: "md",
+						cursor: "pointer",
+						backgroundColor: "blue.subtle",
+						color: "blue.fg",
+						fontWeight: "semibold",
+					}}
 					_hover={{
-						color: "white",
+						color: "blue.fg",
 					}}
 				>
-					{icon && (
-						<Icon
-							mr='4'
-							fontSize='16'
-							_groupHover={{
-								color: "white",
-							}}
-							as={icon}
-						/>
-					)}
+					{icon && <Icon mr='4' fontSize='16' as={icon} />}
 					{label}
 				</Flex>
 			</NextLink>

@@ -13,7 +13,7 @@ export default function PanelHeader({ onOpen, ...rest }: Props) {
 	return (
 		<Flex
 			ml={{ base: 0, md: 60 }}
-			px='8'
+			px={{ base: 4, md: 8 }}
 			height='20'
 			alignItems='center'
 			bg={"bg.panel"}
@@ -21,7 +21,7 @@ export default function PanelHeader({ onOpen, ...rest }: Props) {
 			justifyContent={{ base: "space-between", md: "flex-end" }}
 			{...rest}
 		>
-			<Button onClick={onOpen} display={{ base: "flex", md: "none" }} variant='outline' aria-label='open menu'>
+			<Button onClick={onOpen} display={{ base: "flex", md: "none" }} variant='ghost' aria-label='open menu'>
 				<Menu />
 			</Button>
 
