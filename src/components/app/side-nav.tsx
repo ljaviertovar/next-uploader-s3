@@ -48,15 +48,16 @@ const NavItem = ({ label, icon, href }: NavItemType) => {
 						alignItems: "center",
 						borderRadius: "md",
 						cursor: "pointer",
-						backgroundColor: "blue.subtle",
+						backgroundColor: "bg",
 						color: "blue.fg",
 						fontWeight: "semibold",
+						fontSize: "md",
 					}}
 					_hover={{
 						color: "blue.fg",
 					}}
 				>
-					{icon && <Icon mr='4' fontSize='16' as={icon} />}
+					{icon && <Icon mr='4' fontSize='12px' as={icon} />}
 					{label}
 				</Flex>
 			</NextLink>

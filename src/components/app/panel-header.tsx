@@ -3,7 +3,7 @@ import { MenuContent, MenuItem, MenuRoot, MenuSeparator, MenuTrigger } from "@/c
 
 import Logo from "../logo"
 
-import { ChevronDown, Menu } from "lucide-react"
+import { ChevronDown, LogOut, Menu, UserIcon } from "lucide-react"
 
 interface Props extends FlexProps {
 	onOpen: () => void
@@ -50,9 +50,13 @@ export default function PanelHeader({ onOpen, ...rest }: Props) {
 							</HStack>
 						</MenuTrigger>
 						<MenuContent>
-							<MenuItem value='profile'>Profile</MenuItem>
+							<MenuItem value='profile'>
+								<UserIcon size={"16px"} /> Profile
+							</MenuItem>
 							<MenuSeparator />
-							<MenuItem value='sign-up'>Sign Up</MenuItem>
+							<MenuItem value='sign-up'>
+								<LogOut size={"16px"} /> Sign Up
+							</MenuItem>
 						</MenuContent>
 					</MenuRoot>
 				</Flex>
