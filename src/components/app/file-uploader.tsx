@@ -16,17 +16,23 @@ const fileUpload = {
 }
 
 export default function FileUploader() {
+	const [aceptedFiles, setAceptedFiles] = useState<File[]>([])
 	const [rejectedFiles, setRejectedFiles] = useState<RejectedFileDetails[]>([])
 
 	const handleAcepted = (fileDetails: any) => {
-		console.log("accepted", { fileDetails })
+		setAceptedFiles(fileDetails.files)
 	}
 
 	const handleRejected = (fileDetails: any) => {
+		console.log("Rejected file", fileDetails)
 		fileDetails = fileDetails.files
 		if (fileDetails.length > 0) {
 			setRejectedFiles(fileDetails)
 		}
+	}
+
+	const handleUpload = () => {
+		console.log("Uploading file", aceptedFiles)
 	}
 
 	return (
@@ -36,7 +42,12 @@ export default function FileUploader() {
 			{...fileUpload}
 			onFileAccept={handleAcepted}
 			onFileReject={handleRejected}
-			onChange={() => {
+			onChange={details => {
+				const target = details.target as HTMLInputElement
+				const files: FileList = target.files as FileList
+
+				setAceptedFiles(Array.from(files))
+
 				setRejectedFiles([])
 			}}
 		>
@@ -46,10 +57,20 @@ export default function FileUploader() {
 				<FileUploadList clearable />
 			</Box>
 
-			<HStack justifyContent={"center"} w={"full"} mt={{ base: 6, md: 8 }}>
-				<Button size='sm'>Upload file</Button>
-			</HStack>
+			<FileRejectedList rejectedFiles={rejectedFiles} />
 
+			<HStack justifyContent={"center"} w={"full"} mt={{ base: 6, md: 8 }}>
+				<Button size='sm' disabled={!aceptedFiles.length} onClick={handleUpload}>
+					Upload file
+				</Button>
+			</HStack>
+		</FileUploadRoot>
+	)
+}
+
+const FileRejectedList = ({ rejectedFiles }: { rejectedFiles: RejectedFileDetails[] }) => {
+	return (
+		<VStack gap={4} align='stretch'>
 			{rejectedFiles.map(({ file }) => (
 				<Flex
 					key={file.name}
@@ -68,6 +89,6 @@ export default function FileUploader() {
 					{file.name} - File not allowed or too large.
 				</Flex>
 			))}
-		</FileUploadRoot>
+		</VStack>
 	)
 }
