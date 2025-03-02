@@ -1,13 +1,18 @@
 import Link from "next/link"
 
-import { Text } from "@chakra-ui/react"
+import { Box, HStack, Text } from "@chakra-ui/react"
 
 export default function Logo() {
 	return (
 		<Link href='/'>
-			<Text fontSize='xl' fontFamily='monospace' fontWeight='bold'>
-				IAUploaderS3
-			</Text>
+			<HStack alignItems='center'>
+				<Box w={8} borderRadius={"sm"}>
+					<img src='/img/AIUploaderS3-3.webp' alt='AIUploaderS3' />
+				</Box>
+				<Text fontSize='xl' fontFamily='monospace' fontWeight='bold'>
+					IAUploaderS3
+				</Text>
+			</HStack>
 		</Link>
 	)
 }

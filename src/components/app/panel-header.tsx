@@ -36,7 +36,6 @@ export default function PanelHeader({ onOpen, ...rest }: Props) {
 							<HStack cursor='pointer'>
 								<Avatar.Root>
 									<Avatar.Fallback name='Clark Kent' />
-									<Avatar.Image src='/img/avatars/01.png' />
 								</Avatar.Root>
 								<VStack display={{ base: "none", md: "flex" }} alignItems='flex-start' gap='1px' ml='2'>
 									<Text fontSize='sm'>Clark Kent</Text>
