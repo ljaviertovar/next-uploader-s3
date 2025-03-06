@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 
-import { Provider } from "@/components/ui/provider"
+import { Provider as ChakraProvider } from "@/components/ui/provider"
 import { Theme } from "@chakra-ui/react"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
 	title: "AI UploaderS3",
@@ -16,11 +17,12 @@ export default function RootLayout({
 	return (
 		<html lang='en' suppressHydrationWarning>
 			<body>
-				<Provider>
+				<ChakraProvider>
 					<Theme appearance='dark' colorPalette='cyan'>
+						<Toaster />
 						{children}
 					</Theme>
-				</Provider>
+				</ChakraProvider>
 			</body>
 		</html>
 	)

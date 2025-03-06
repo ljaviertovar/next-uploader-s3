@@ -30,43 +30,35 @@ const uploadFileToS3 = async (file: File) => {
 
 export async function POST(req: NextRequest) {
   try {
-
     const formData = await req.formData();
     const file = formData.get("file") as File;
+    console.log("formData", formData);
+    console.log("file", file);
 
     if (!file) {
-      return NextResponse.json(
+      return new Response(null,
         {
-          success: false,
           status: 400,
-          body: {
-            message: "File is required",
-          },
+          statusText: "File is required.",
         }
       )
     }
 
     const uploadedFile = await uploadFileToS3(file);
 
-    return {
+    return new Response(JSON.stringify({
+      fileName: uploadedFile,
+    }), {
       status: 200,
-      success: true,
-      body: {
-        message: "File uploaded successfully",
-        data: {
-          fileName: uploadedFile,
-        },
-      },
-    };
-  } catch (error) {
-    return {
-      status: 500,
-      success: false,
-      body: {
-        message: "Failed to upload file",
-        error,
-      },
-    };
-  }
+      statusText: "File uploaded successfully."
+    })
 
+  } catch (error) {
+    return new Response(null,
+      {
+        status: 500,
+        statusText: "Failed to upload file.",
+      }
+    )
+  }
 }
