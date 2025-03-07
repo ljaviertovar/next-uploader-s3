@@ -1,5 +1,5 @@
 import { Heading, VStack } from "@chakra-ui/react"
-import FileUploader from "@/components/app/file-uploader"
+import FileUploader from "@/components/app/upload/file-uploader"
 
 export default function UploaderPage() {
 	return (
