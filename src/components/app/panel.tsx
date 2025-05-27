@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { Box, useDisclosure } from "@chakra-ui/react"
-import { DrawerBackdrop, DrawerContent, DrawerRoot } from "@/components/ui/drawer"
+import { Box, useDisclosure } from '@chakra-ui/react'
+import { DrawerBackdrop, DrawerContent, DrawerRoot } from '@/components/ui/drawer'
 
-import SideNav from "@/components/app/side-nav"
-import PanelHeader from "@/components/app/panel-header"
+import SideNav from '@/components/app/side-nav'
+import PanelHeader from '@/components/app/panel-header'
 
 interface Props {
 	children: React.ReactNode
@@ -15,8 +15,15 @@ export default function Panel({ children }: Props) {
 
 	return (
 		<Box minH='100vh'>
-			<SideNav onClose={() => onClose} display={{ base: "none", md: "block" }} />
-			<DrawerRoot open={open} placement={"start"} size={"sm"}>
+			<SideNav
+				onClose={() => onClose}
+				display={{ base: 'none', md: 'block' }}
+			/>
+			<DrawerRoot
+				open={open}
+				placement={'start'}
+				size={'sm'}
+			>
 				<DrawerBackdrop />
 				<DrawerContent>
 					<SideNav onClose={onClose} />
@@ -27,10 +34,10 @@ export default function Panel({ children }: Props) {
 
 			<Box
 				ml={{ base: 0, md: 60 }}
-				as={"main"}
+				as={'main'}
 				p={4}
 				css={{
-					height: "calc(100vh - 80px)",
+					height: 'calc(100vh - 80px)',
 				}}
 			>
 				{children}

@@ -1,14 +1,11 @@
 'use client'
 
+import { Box, Button, HStack, Progress } from '@chakra-ui/react'
 import { FileUploadDropzone, FileUploadList, FileUploadRoot } from '@/components/ui/file-upload'
 
-import { Box, Button, Flex, HStack, Icon, Progress, VStack } from '@chakra-ui/react'
+import FileRejectedList from './file-rejected-list'
 
-import { LuFile } from 'react-icons/lu'
-
-import useUploader from './hooks/use-uploader'
-
-import { RejectedFileDetails } from '@/types'
+import useUploader from '../hooks/use-uploader'
 
 const fileUpload = {
 	maxFiles: 1,
@@ -81,36 +78,5 @@ export default function FileUploader() {
 				</Button>
 			</HStack>
 		</FileUploadRoot>
-	)
-}
-
-const FileRejectedList = ({ rejectedFiles }: { rejectedFiles: RejectedFileDetails[] }) => {
-	return (
-		<VStack
-			gap={4}
-			align='stretch'
-		>
-			{rejectedFiles.map(({ file }) => (
-				<Flex
-					key={file.name}
-					gap={3}
-					borderWidth={1}
-					p={4}
-					textStyle={'sm'}
-					borderRadius={'l2'}
-					bg={'bg.error'}
-					borderColor={'border.error'}
-					color={'fg.error'}
-				>
-					<Icon
-						fontSize='lg'
-						color='fg.error'
-					>
-						<LuFile />
-					</Icon>
-					{file.name} - File not allowed or too large.
-				</Flex>
-			))}
-		</VStack>
 	)
 }

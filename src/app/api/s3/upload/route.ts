@@ -1,5 +1,5 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 const s3Client = new S3Client({
   region: process.env.NEXT_AWS_S3_REGION as string,
