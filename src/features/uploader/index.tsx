@@ -3,9 +3,9 @@
 import { Box, Button, HStack, Progress } from '@chakra-ui/react'
 import { FileUploadDropzone, FileUploadList, FileUploadRoot } from '@/components/ui/file-upload'
 
-import FileRejectedList from './file-rejected-list'
+import FileRejectedList from './components/file-rejected-list'
 
-import useUploader from '../hooks/use-uploader'
+import useUploader from './hooks/use-uploader'
 
 const fileUpload = {
 	maxFiles: 1,

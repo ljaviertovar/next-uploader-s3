@@ -1,4 +1,7 @@
+'use client'
+
 import NextLink from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { Box, Flex, BoxProps, Link as ChakraLink, CloseButton, Icon } from '@chakra-ui/react'
 import Logo from '../commons/logo'
@@ -12,6 +15,9 @@ interface SideNav extends BoxProps {
 }
 
 export default function SideNav({ onClose, ...rest }: SideNav) {
+	const pathname = usePathname()
+	const selected = NAV_ITEMS.find(item => item.href === pathname)
+
 	return (
 		<Box
 			transition='3s ease'
@@ -35,22 +41,24 @@ export default function SideNav({ onClose, ...rest }: SideNav) {
 					onClick={onClose}
 				/>
 			</Flex>
-			<Box
-				py={4}
-				px={8}
+			<Flex
+				direction={'column'}
+				gap={2}
+				p={4}
 			>
 				{NAV_ITEMS.map(item => (
 					<NavItem
 						key={item.label}
+						selected={selected?.href === item.href}
 						{...item}
 					/>
 				))}
-			</Box>
+			</Flex>
 		</Box>
 	)
 }
 
-const NavItem = ({ label, icon, href }: NavItemType) => {
+const NavItem = ({ label, icon, href, selected }: NavItemType & { selected: boolean }) => {
 	return (
 		<ChakraLink
 			asChild
@@ -60,24 +68,23 @@ const NavItem = ({ label, icon, href }: NavItemType) => {
 				<Flex
 					css={{
 						width: 'full',
-						paddingX: '4',
-						paddingY: '2',
+						padding: '4',
 						alignItems: 'center',
 						borderRadius: 'md',
-						cursor: 'pointer',
-						backgroundColor: 'bg',
-						color: 'cyan.fg',
+						backgroundColor: selected ? 'bg' : 'transparent',
+						color: selected ? 'cyan.fg' : 'fg',
 						fontWeight: 'semibold',
 						fontSize: 'md',
 					}}
 					_hover={{
 						color: 'cyan.fg',
+						backgroundColor: 'bg',
 					}}
 				>
 					{icon && (
 						<Icon
 							mr='4'
-							fontSize='sm'
+							size={'sm'}
 							as={icon}
 						/>
 					)}

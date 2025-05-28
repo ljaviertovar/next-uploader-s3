@@ -1,5 +1,5 @@
 import { Heading, VStack } from '@chakra-ui/react'
-import FileUploader from '@/features/uploader'
+import Files from '@/features/files'
 
 export default function UploaderPage() {
 	return (
@@ -10,9 +10,9 @@ export default function UploaderPage() {
 				py={{ base: 4, md: 8 }}
 				letterSpacing={'tight'}
 			>
-				Upload your files to your Bucket
+				My Files
 			</Heading>
-			<FileUploader />
+			<Files />
 		</VStack>
 	)
 }
